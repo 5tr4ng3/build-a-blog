@@ -125,12 +125,20 @@ def new_post():
             new_post = Blog(post_title, post_message)
             db.session.add(new_post)
             db.session.commit()
-            return redirect('/blog')
+            return render_template('post_entry.html', post=new_post)
         else:
             flash("Post must have a title and message", "error")
             return render_template('newpost.html', post_title=post_title, post_message=post_message)
 
     return render_template('newpost.html')
+
+@app.route('/post_entry')
+def post_entry():
+
+    post_id = request.args.get('post')
+    post = Blog.query.filter_by(id=post_id).first()
+    
+    return render_template('post_entry.html', post=post)
 
 if __name__ == '__main__':
     app.run()

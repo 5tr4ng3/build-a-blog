@@ -10,7 +10,7 @@
 {% endif %}
 
 {% for post in posts %}
-<h2>{{post.post_title}}</h2>
+<h2> <a href="/post_entry?post={{post.id}}">{{post.post_title}}</a></h2>
 <p>{{post.post_message}}</p>
 <hr />
 {% endfor %}
