@@ -48,17 +48,6 @@ def index():
     return render_template('blog.html', title="Build A Blog", posts=posts)
 
 
-# @app.route('/delete-task', methods=['POST'])
-# def delete_task():
-#     task_id = int(request.form['task-id'])
-#     task = Task.query.get(task_id)
-#     task.completed = True
-#     db.session.add(task)
-#     db.session.commit()
-
-#     return redirect('/')
-
-
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
@@ -131,6 +120,7 @@ def new_post():
             return render_template('newpost.html', post_title=post_title, post_message=post_message)
 
     return render_template('newpost.html')
+
 
 @app.route('/post_entry')
 def post_entry():
